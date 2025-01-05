@@ -3,20 +3,26 @@ import '@mantine/carousel/styles.css';
 import { Carousel } from '@mantine/carousel'
 import products from "../products.json"
 import Slide from './components/Slide.jsx'
-import { Container, Flex, Title } from '@mantine/core'
+import {  Container, Title } from '@mantine/core'
+
 const App = () => {
   console.log("running")
   console.log(products)
   return (
-    <Flex p={56}>
+    <Container>
       <Title style={{ textAlign: "center" }}>You May also Like</Title>
-      <Carousel withIndicators>
-        <Flex gap={16}>
-          {products.map(product => <Slide key={product.sku} {...product}/>)}
-
-        </Flex>
+      <Carousel
+        withIndicators
+        slideSize={{ base: "100%", xs: "50%", md: "33.333333%" }}
+        slidesToScroll={{ base: 1, xs: 2, md: 3 }}
+        slideGap="md"
+        align="start"
+      >
+        {products.map(product =>
+          <Slide key={product.sku} {...product}/>
+        )}
       </Carousel>
-    </Flex>
+    </Container>
 
   )
 }
