@@ -3,8 +3,9 @@ import '@mantine/carousel/styles.css';
 import { Carousel } from '@mantine/carousel'
 import products from "../products.json"
 import Slide from './components/Slide.jsx'
-import { Box, Container, Flex, Indicator, Title } from '@mantine/core'
-import { IoCartOutline } from "react-icons/io5";
+import { ActionIcon, Box, Container, Flex, Indicator, Title } from '@mantine/core'
+import { IoCartOutline, IoRemoveCircleOutline } from "react-icons/io5";
+
 import { useState } from 'react'
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
   const [numItemsCart, setNumItemsCart] = useState(0)
   return (
     <Box>
-      <Flex justify="flex-end" p={36}>
+      <Flex justify="flex-end" p={36} gap={16}>
+        {numItemsCart > 0 && <ActionIcon color="red" onClick={() => setNumItemsCart(numItemsCart - 1)}><IoRemoveCircleOutline /></ActionIcon>}
         <Indicator label={numItemsCart} size={24}>
           <IoCartOutline size={36}/>
         </Indicator>
