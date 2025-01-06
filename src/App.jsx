@@ -20,7 +20,7 @@ const App = () => {
         </Indicator>
       </Flex>
       <Container py={16}>
-        <Title style={{ textAlign: "center" }}>You May also Like</Title>
+        <Title style={{ textAlign: "center" }}>You may also Like</Title>
         <Carousel
           withIndicators
           slideSize={{ base: "100%", xs: "50%", md: "33.333333%" }}
