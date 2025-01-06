@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Card, Flex, Image, Text, Title } from '@mantine/core'
+import { Button, Card, Flex, Image, Text } from '@mantine/core'
 import backupImageMain from "../assets/images/image_main.jpg"
 import backupImageAlt from "../assets/images/image_alt.jpg"
 import { useHover } from '@mantine/hooks'
@@ -11,16 +11,14 @@ const Slide = ({
   category,
   price,
   salePrice,
-  priceCurrency
 }) => {
 
   const { hovered, ref } = useHover();
 
-
   return (
     <Carousel.Slide>
       <Card>
-        <Card.Section ref={ref}>
+        <Card.Section ref={ref} p={8}>
           <Image
             src={hovered ? imageAlt : imageMain}
             fallbackSrc={hovered ? backupImageAlt : backupImageMain}
@@ -35,11 +33,18 @@ const Slide = ({
 
 
           <Flex justify="space-around" align="center" py={12}>
-            <Flex gap={6}>
-              <Text style={{ textDecoration: salePrice ? "line-through" : "" }}>{price}</Text>
-              {salePrice && <Text style={{ color: "red" }}>${salePrice}</Text>}
+            <Flex gap={6} align="center">
+              <Text
+                style={{
+                  textDecoration: salePrice ? "line-through" : "",
+                  fontWeight: 500,
+                  fontSize: 14
+              }}
+              >{price}
+              </Text>
+              {salePrice && <Text style={{ color: "red", fontWeight: 700, fontSize: 16 }}>${salePrice}</Text>}
             </Flex>
-            <Button variant="gradient">Buy Now</Button>
+            <Button variant="gradient" size="xs">Add to Cart</Button>
           </Flex>
 
 

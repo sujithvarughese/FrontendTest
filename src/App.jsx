@@ -9,7 +9,7 @@ const App = () => {
   console.log("running")
   console.log(products)
   return (
-    <Container>
+    <Container py={16}>
       <Title style={{ textAlign: "center" }}>You May also Like</Title>
       <Carousel
         withIndicators
