@@ -3,26 +3,36 @@ import '@mantine/carousel/styles.css';
 import { Carousel } from '@mantine/carousel'
 import products from "../products.json"
 import Slide from './components/Slide.jsx'
-import {  Container, Title } from '@mantine/core'
+import { Box, Container, Flex, Indicator, Title } from '@mantine/core'
+import { IoCartOutline } from "react-icons/io5";
+import { useState } from 'react'
 
 const App = () => {
-  console.log("running")
-  console.log(products)
+
+  const [numItemsCart, setNumItemsCart] = useState(0)
   return (
-    <Container py={16}>
-      <Title style={{ textAlign: "center" }}>You May also Like</Title>
-      <Carousel
-        withIndicators
-        slideSize={{ base: "100%", xs: "50%", md: "33.333333%" }}
-        slidesToScroll={{ base: 1, xs: 2, md: 3 }}
-        slideGap="md"
-        align="start"
-      >
-        {products.map(product =>
-          <Slide key={product.sku} {...product}/>
-        )}
-      </Carousel>
-    </Container>
+    <Box>
+      <Flex justify="flex-end" p={36}>
+        <Indicator label={numItemsCart} size={24}>
+          <IoCartOutline size={36}/>
+        </Indicator>
+      </Flex>
+      <Container py={16}>
+        <Title style={{ textAlign: "center" }}>You May also Like</Title>
+        <Carousel
+          withIndicators
+          slideSize={{ base: "100%", xs: "50%", md: "33.333333%" }}
+          slidesToScroll={{ base: 1, xs: 2, md: 3 }}
+          slideGap="md"
+          align="start"
+        >
+          {products.map(product =>
+            <Slide key={product.sku} {...product} addItem={() => setNumItemsCart(numItemsCart + 1)}/>
+          )}
+        </Carousel>
+      </Container>
+    </Box>
+
 
   )
 }

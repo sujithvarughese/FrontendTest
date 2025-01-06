@@ -11,6 +11,7 @@ const Slide = ({
   category,
   price,
   salePrice,
+  addItem
 }) => {
 
   const { hovered, ref } = useHover();
@@ -44,7 +45,7 @@ const Slide = ({
               </Text>
               {salePrice && <Text style={{ color: "red", fontWeight: 700, fontSize: 16 }}>${salePrice}</Text>}
             </Flex>
-            <Button variant="gradient" size="xs">Add to Cart</Button>
+            <Button variant="gradient" size="xs" onClick={addItem}>Add to Cart</Button>
           </Flex>
 
 
